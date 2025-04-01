@@ -3,19 +3,34 @@
 
 import PackageDescription
 
+private let packageName = "TAPurchaseAdaptorRevenueCat"
+
 let package = Package(
-    name: "TAPurchasingRevenueCatService",
+    name: packageName,
+    platforms: [
+        .iOS(.v15),
+        .macOS(.v14)
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "TAPurchasingRevenueCatService",
-            targets: ["TAPurchasingRevenueCatService"]),
+            name: packageName,
+            targets: [packageName]),
+    ],
+    dependencies: [
+        .package(url: "git@github.com:TechArtists/ios-analytics.git", .upToNextMajor(from: "0.9.0")),
+        .package(url: "git@github.com:TechArtists/ios-debug-tools.git", .upToNextMajor(from: "0.9.0")),
+        .package(url: "git@github.com:TechArtists/ios-purchases.git", .upToNextMajor(from: "0.9.0")),
+        .package(url: "https://github.com/RevenueCat/purchases-ios.git", .upToNextMajor(from: "5.4.0"))
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "TAPurchasingRevenueCatService"),
-
+            name: packageName,
+            dependencies: [
+                .product(name: "TAAnalytics", package: "ios-analytics"),
+                .product(name: "TADebugTools", package: "ios-debug-tools"),
+                .product(name: "TAPurchase", package: "ios-purchases"),
+                .product(name: "RevenueCat", package: "purchases-ios")
+            ]
+        ),
     ]
 )
