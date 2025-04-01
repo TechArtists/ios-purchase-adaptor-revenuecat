@@ -26,10 +26,10 @@ let package = Package(
         .target(
             name: packageName,
             dependencies: [
-                .product(name: "TAAnalytics", package: "ios-analytics"),
+                .product(name: "TAAnalytics" , package: "ios-analytics"),
                 .product(name: "TADebugTools", package: "ios-debug-tools"),
-                .product(name: "TAPurchase", package: "ios-purchases"),
-                .product(name: "RevenueCat", package: "purchases-ios")
+                .product(name: "TAPurchase"  , package: "ios-purchase"),
+                .product(name: "RevenueCat"  , package: "purchases-ios")
             ]
         ),
     ]
