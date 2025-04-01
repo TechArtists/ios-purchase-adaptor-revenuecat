@@ -23,9 +23,11 @@ public struct TAPurchaseAdaptorRevenueCat: TAPurchaseAdaptorProtocol {
     private let entitlementsSubject = PassthroughSubject<[TAGrantedEntitlement], Never>()
     private var cancellables = Set<AnyCancellable>()
 
-    public init() {
+    public init(apiKey: String) {
         self.grantedEntitlementsUpdatePublisher = entitlementsSubject.eraseToAnyPublisher()
-
+        
+        Purchases.configure(withAPIKey: apiKey)
+        Purchases.logLevel = .debug
         start()
     }
     
