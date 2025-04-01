@@ -19,7 +19,7 @@ let package = Package(
     dependencies: [
         .package(url: "git@github.com:TechArtists/ios-analytics.git", .upToNextMajor(from: "0.9.0")),
         .package(url: "git@github.com:TechArtists/ios-debug-tools.git", .upToNextMajor(from: "0.9.0")),
-        .package(url: "git@github.com:TechArtists/ios-purchases.git", .upToNextMajor(from: "0.9.0")),
+        .package(url: "git@github.com:TechArtists/ios-purchase.git", .upToNextMajor(from: "0.9.0")),
         .package(url: "https://github.com/RevenueCat/purchases-ios.git", .upToNextMajor(from: "5.4.0"))
     ],
     targets: [
