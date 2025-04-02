@@ -15,7 +15,6 @@ public struct TAPurchaseAdaptorRevenueCat: TAPurchaseAdaptorProtocol {
     enum PurchaseError: LocalizedError {
         case productNotFound
         case userCancelledPurchase
-        case failedToPurchas
     }
 
     public var grantedEntitlementsUpdatePublisher: AnyPublisher<[TAGrantedEntitlement], Never>
@@ -124,8 +123,7 @@ public struct TAPurchaseAdaptorRevenueCat: TAPurchaseAdaptorProtocol {
                 guard let sk2Product = storeProduct.sk2Product else { continue }
 
                 group.addTask {
-                    let isEligible = try await checkTrialEligibility(productID: storeProduct.productIdentifier)
-                    return TAProduct(storeKitProduct: sk2Product, isEligibleForIntroOffer: isEligible)
+                    return TAProduct(storeKitProduct: sk2Product)
                 }
             }
 
